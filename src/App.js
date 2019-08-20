@@ -14,9 +14,12 @@ export default function App() {
 		{ id: 3, task: 'Get Flutter Course from Avinash', completed: false }
 	];
 	const [ todos, setTodos ] = useState(initialState);
-	const addTodo = (todoTask) => {
-		setTodos([ ...todos, { id: 4, task: todoTask, completed: false } ]);
-	};
+
+	const addTodo = (todoTask) => setTodos([ ...todos, { id: 4, task: todoTask, completed: false } ]);
+	
+	const toggleTodo = (todoID) =>
+		setTodos(todos.map((todo) => (todo.id === todoID ? { ...todo, completed: !todo.completed } : todo)));
+
 	return (
 		<Paper
 			style={{
@@ -34,10 +37,10 @@ export default function App() {
 				</Toolbar>
 			</AppBar>
 
-			<Grid container justify='center' style={{marginTop: '2rem'}}>
+			<Grid container justify='center' style={{ marginTop: '2rem' }}>
 				<Grid item xs={11} sm={10} md={8} lg={4}>
 					<Input onSubmit={addTodo} />
-					<TodoList todos={todos} />
+					<TodoList todos={todos} toggle={toggleTodo} />
 				</Grid>
 			</Grid>
 		</Paper>
