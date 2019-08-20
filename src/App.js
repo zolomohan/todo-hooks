@@ -33,8 +33,13 @@ export default function App() {
 					<Typography color='inherit'>Todos</Typography>
 				</Toolbar>
 			</AppBar>
-			<Input onSubmit={addTodo} />
-			<TodoList todos={todos} />
+
+			<Grid container justify='center' style={{marginTop: '2rem'}}>
+				<Grid item xs={11} sm={10} md={8} lg={4}>
+					<Input onSubmit={addTodo} />
+					<TodoList todos={todos} />
+				</Grid>
+			</Grid>
 		</Paper>
 	);
 }
