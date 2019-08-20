@@ -5,6 +5,7 @@ import AppBar from '@material-ui/core/AppBar'
 import Toolbar from '@material-ui/core/Toolbar'
 import Typography from '@material-ui/core/Typography'
 import TodoList from './TodoList';
+import Input from './Input';
 
 export default function App() {
 
@@ -30,6 +31,7 @@ export default function App() {
 					<Typography color='inherit'>Todos</Typography>
 				</Toolbar>
 			</AppBar>
+			<Input />
 			<TodoList todos={todos} />
 		</Paper>
 	)
