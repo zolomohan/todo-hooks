@@ -44,7 +44,7 @@ export default function App() {
 			</AppBar>
 
 			<Grid container justify='center' style={{ marginTop: '2rem' }}>
-				<Grid item xs={11} sm={10} md={8} lg={4}>
+				<Grid item xs={11} sm={10} md={8} lg={6}>
 					<Paper style={{ margin: '1rem 0', padding: '0.5rem 1rem 1rem' }}>
 						<Input onSubmit={addTodo} />
 					</Paper>

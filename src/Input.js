@@ -4,7 +4,6 @@ import useInputState from './hooks/useInputState';
 
 export default function Input({ initialValue, onSubmit, editMode, id, toggleEditMode }) {
 	const [ value, handleChange, resetValue ] = useInputState(initialValue);
-
 	return (
 		<form
 			onSubmit={(event) => {
@@ -15,14 +14,16 @@ export default function Input({ initialValue, onSubmit, editMode, id, toggleEdit
 				} else onSubmit(value);
 				resetValue();
 			}}
+			style={editMode && {margin: '0 0.8rem', width: '100%'}}
 		>
 			<TextField 
 				fullWidth 
 				value={value} 
-				label='New Task' 
+				label={!editMode && 'New Task'} 
 				onChange={handleChange} 
 				style={{ marginTop: 0 }} 
-			/>
+				autoFocus={editMode}
+			/> 
 		</form>
 	);
 }
