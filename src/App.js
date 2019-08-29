@@ -16,12 +16,15 @@ export default function App() {
 	];
 	const [ todos, setTodos ] = useState(initialState);
 
-	const addTodo = (todoTask) => setTodos([ ...todos, { id: uuid(), task: todoTask, completed: false } ]);
+	const addTodo = (task) => setTodos([ ...todos, { id: uuid(), task: task, completed: false } ]);
 
 	const toggleTodo = (id) =>
 		setTodos(todos.map((todo) => (todo.id === id ? { ...todo, completed: !todo.completed } : todo)));
 
 	const removeTodo = (id) => setTodos(todos.filter((todo) => todo.id !== id));
+
+	const editTodo = (task, id) =>
+		setTodos(todos.map((todo) => (todo.id === id ? { ...todo, task: task } : todo)));
 
 	return (
 		<Paper
@@ -42,8 +45,12 @@ export default function App() {
 
 			<Grid container justify='center' style={{ marginTop: '2rem' }}>
 				<Grid item xs={11} sm={10} md={8} lg={4}>
-					<Input onSubmit={addTodo} />
-					<TodoList todos={todos} toggle={toggleTodo} remove={removeTodo} />
+					<Paper style={{ margin: '1rem 0', padding: '0.5rem 1rem 1rem' }}>
+						<Input onSubmit={addTodo} />
+					</Paper>
+					<Paper>
+						<TodoList todos={todos} toggle={toggleTodo} remove={removeTodo} edit={editTodo} />
+					</Paper>
 				</Grid>
 			</Grid>
 		</Paper>
