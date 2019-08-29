@@ -7,7 +7,7 @@ export default function Input({ onSubmit }) {
 	const [ value, handleChange, resetValue ] = useInputState('');
 
 	return (
-		<Paper style={{margin: '1rem 0', padding: '0.5rem 1rem 1rem'}}>
+		<Paper style={{ margin: '1rem 0', padding: '0.5rem 1rem 1rem' }}>
 			<form
 				onSubmit={(event) => {
 					event.preventDefault();
@@ -15,7 +15,7 @@ export default function Input({ onSubmit }) {
 					resetValue();
 				}}
 			>
-				<TextField value={value} label='New Task' fullWidth onChange={handleChange} style={{marginTop: 0}}/>
+				<TextField value={value} label='New Task' fullWidth onChange={handleChange} style={{ marginTop: 0 }} />
 			</form>
 		</Paper>
 	);

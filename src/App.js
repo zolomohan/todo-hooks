@@ -16,7 +16,7 @@ export default function App() {
 	const [ todos, setTodos ] = useState(initialState);
 
 	const addTodo = (todoTask) => setTodos([ ...todos, { id: 4, task: todoTask, completed: false } ]);
-	
+
 	const toggleTodo = (todoID) =>
 		setTodos(todos.map((todo) => (todo.id === todoID ? { ...todo, completed: !todo.completed } : todo)));
 

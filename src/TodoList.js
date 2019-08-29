@@ -7,9 +7,9 @@ export default function TodoList({ todos, toggle }) {
 	return (
 		<Paper>
 			<List>
-			{todos.map((todo) => (
-				<Todo task={todo.task} key={todo.id} id={todo.id} completed={todo.completed} toggle={toggle} />
-			))}
+				{todos.map((todo) => (
+					<Todo task={todo.task} key={todo.id} id={todo.id} completed={todo.completed} toggle={toggle} />
+				))}
 			</List>
 		</Paper>
 	);
