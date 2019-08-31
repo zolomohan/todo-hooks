@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import AppBar from '@material-ui/core/AppBar';
@@ -9,12 +9,12 @@ import Input from './Input';
 import uuid from 'uuid/v4';
 
 export default function App() {
-	const initialState = [
-		{ id: 1, task: 'Complete Building Todo with React Hooks', completed: false },
-		{ id: 2, task: 'Learn Context', completed: false },
-		{ id: 3, task: 'Get Flutter Course from Avinash', completed: false }
-	];
+	const initialState = JSON.parse(window.localStorage.getItem('todos')) || []; 
 	const [ todos, setTodos ] = useState(initialState);
+
+	useEffect(() => {
+		window.localStorage.setItem('todos', JSON.stringify(todos));
+	}, [todos])
 
 	const addTodo = (task) => setTodos([ ...todos, { id: uuid(), task: task, completed: false } ]);
 
