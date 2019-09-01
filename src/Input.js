@@ -7,7 +7,7 @@ import Done from '@material-ui/icons/Done';
 import Close from '@material-ui/icons/Close';
 
 export default function Input({ initialValue, editMode, id, toggleEditMode }) {
-	const [ value, handleChange, resetValue ] = useInputState(initialValue);
+	const [value, handleChange, resetValue] = useInputState(initialValue);
 	const { addTodo, editTodo } = useContext(TodoContext);
 	return (
 		<form
@@ -47,8 +47,8 @@ export default function Input({ initialValue, editMode, id, toggleEditMode }) {
 					>
 						<Done />
 					</IconButton>
-					<IconButton>
-						<Close onClick={toggleEditMode} />
+					<IconButton onClick={toggleEditMode}>
+						<Close />
 					</IconButton>
 				</>
 			)}
