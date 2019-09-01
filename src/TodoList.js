@@ -2,7 +2,6 @@ import React, { useContext } from 'react';
 import Paper from '@material-ui/core/Paper';
 import List from '@material-ui/core/List';
 import Todo from './Todo';
-import Divider from '@material-ui/core/Divider';
 import { TodoContext } from './contexts/todos.context';
 
 export default function TodoList() {
@@ -12,10 +11,7 @@ export default function TodoList() {
 		<Paper>
 			<List>
 				{todos.map((todo, i) => (
-					<>
-						<Todo key={todo.id} {...todo} />
-						{i < todos.length - 1 && <Divider />}
-					</>
+					<Todo key={todo.id} {...todo} divider={i < todos.length - 1} />
 				))}
 			</List>
 		</Paper>
