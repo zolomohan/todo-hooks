@@ -9,14 +9,15 @@ import Close from '@material-ui/icons/Close';
 export default function Input({ initialValue, editMode, id, toggleEditMode }) {
 	const [value, handleChange, resetValue] = useInputState(initialValue);
 	const { addTodo, editTodo } = useContext(TodoContext);
+	function edit() {
+		editTodo(value, id);
+		toggleEditMode();
+	}
 	return (
 		<form
 			onSubmit={(event) => {
 				event.preventDefault();
-				if (editMode) {
-					editTodo(value, id);
-					toggleEditMode();
-				} else addTodo(value);
+				editMode ? edit() : addTodo(value);
 				resetValue();
 			}}
 			style={
@@ -39,12 +40,7 @@ export default function Input({ initialValue, editMode, id, toggleEditMode }) {
 			/>
 			{editMode && (
 				<>
-					<IconButton
-						onClick={() => {
-							editTodo(value, id);
-							toggleEditMode();
-						}}
-					>
+					<IconButton onClick={edit}>
 						<Done />
 					</IconButton>
 					<IconButton onClick={toggleEditMode}>
