@@ -7,6 +7,7 @@ import Typography from '@material-ui/core/Typography';
 import TodoList from './TodoList';
 import Input from './Input';
 import useTodoState from './hooks/useTodoState';
+import TodoProvider from './contexts/todos.context';
 
 export default function App() {
 	const { todos, addTodo, toggleTodo, editTodo, removeTodo } = useTodoState([]);
@@ -29,14 +30,16 @@ export default function App() {
 
 			<Grid container justify='center' style={{ marginTop: '2rem' }}>
 				<Grid item xs={11} sm={10} md={8} lg={6}>
-					<Paper style={{ margin: '1rem 0', padding: '0.5rem 1rem 1rem' }}>
-						<Input onSubmit={addTodo} />
-					</Paper>
-					{todos.length > 0 && (
-						<Paper>
-							<TodoList todos={todos} toggle={toggleTodo} remove={removeTodo} edit={editTodo} />
+					<TodoProvider>
+						<Paper style={{ margin: '1rem 0', padding: '0.5rem 1rem 1rem' }}>
+							<Input onSubmit={addTodo} />
 						</Paper>
-					)}
+						{todos.length > 0 && (
+							<Paper>
+								<TodoList todos={todos} toggle={toggleTodo} remove={removeTodo} edit={editTodo} />
+							</Paper>
+						)}
+					</TodoProvider>
 				</Grid>
 			</Grid>
 		</Paper>
