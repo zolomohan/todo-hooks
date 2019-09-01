@@ -7,7 +7,7 @@ import Done from '@material-ui/icons/Done';
 import Close from '@material-ui/icons/Close';
 
 export default function Input({ initialValue, editMode, id, toggleEditMode }) {
-	const [value, handleChange, resetValue] = useInputState(initialValue);
+	const [value, handleChange, resetValue] = useInputState(initialValue || '');
 	const dispatch = useContext(DispatchContext);
 	function edit() {
 		dispatch({ type: 'EDIT', task: value, id: id });
