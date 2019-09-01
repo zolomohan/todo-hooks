@@ -1,14 +1,14 @@
 import React, { useContext } from 'react';
 import TextField from '@material-ui/core/TextField';
 import useInputState from './hooks/useInputState';
-import { TodoContext } from './contexts/todos.context';
+import { DispatchContext } from './contexts/todos.context';
 import { IconButton } from '@material-ui/core';
 import Done from '@material-ui/icons/Done';
 import Close from '@material-ui/icons/Close';
 
 export default function Input({ initialValue, editMode, id, toggleEditMode }) {
 	const [value, handleChange, resetValue] = useInputState(initialValue);
-	const { dispatch } = useContext(TodoContext);
+	const dispatch = useContext(DispatchContext);
 	function edit() {
 		dispatch({ type: 'EDIT', task: value, id: id });
 		toggleEditMode();

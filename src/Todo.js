@@ -9,11 +9,11 @@ import EditIcon from '@material-ui/icons/Edit';
 import Input from './Input';
 import Divider from '@material-ui/core/Divider';
 import useToggle from './hooks/useToggle';
-import { TodoContext } from './contexts/todos.context';
+import { DispatchContext } from './contexts/todos.context';
 
 export default function Todo({ id, task, completed, divider }) {
 	const [editMode, toggleEditMode] = useToggle();
-	const { dispatch } = useContext(TodoContext);
+	const dispatch = useContext(DispatchContext);
 	return (
 		<>
 			<ListItem style={{ textDecoration: completed && 'line-through', height: '64px' }}>
