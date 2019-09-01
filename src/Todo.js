@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, memo } from 'react';
 import ListItem from '@material-ui/core/ListItem';
 import Checkbox from '@material-ui/core/Checkbox';
 import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction';
@@ -7,12 +7,11 @@ import IconButton from '@material-ui/core/IconButton';
 import DeleteIcon from '@material-ui/icons/Delete';
 import EditIcon from '@material-ui/icons/Edit';
 import Input from './Input';
-import Divider from '@material-ui/core/Divider';
 import useToggle from './hooks/useToggle';
 import { DispatchContext } from './contexts/todos.context';
 
-export default function Todo({ id, task, completed, divider }) {
-	const [editMode, toggleEditMode] = useToggle();
+export default memo(function Todo({ id, task, completed }) {
+	const [ editMode, toggleEditMode ] = useToggle();
 	const dispatch = useContext(DispatchContext);
 	return (
 		<>
@@ -34,7 +33,6 @@ export default function Todo({ id, task, completed, divider }) {
 					</>
 				)}
 			</ListItem>
-			{divider && <Divider />}
 		</>
 	);
-}
+});
